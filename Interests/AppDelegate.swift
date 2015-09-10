@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    func xxx() {
+        
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window?.backgroundColor = UIColor(hex: "f2f2f2")
+        
+        Parse.setApplicationId("AmRHj24hoCSWOWlL1mop5RbpWniM0a5caWfoB4X8", clientKey: "sStjfFINjlJ78mvKHxwHs7ONYmZ3ZfZgFGKojDyN")
+        
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
         return true
     }
 
@@ -43,4 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+// MARK: end AppDelegate -
 
