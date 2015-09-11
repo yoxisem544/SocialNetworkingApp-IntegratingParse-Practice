@@ -143,32 +143,57 @@ class NewInterestViewController: UIViewController
     }
     
     func createNewInterest() {
-        if let featuredImageData = UIImagePNGRepresentation(featuredImage) {
-            let featuredImageFile = PFFile(name: "image.png", data: featuredImageData)  
-            
-            let newInterest = PFObject(className: "Interest")
-            newInterest["title"] = newInterestTitleTextField.text!
-            newInterest["interestDescription"] = newInterestDescriptionTextView.text!
-            newInterest["numberOfMembers"] = 1
-            newInterest["numberOfPosts"] = 0
-            newInterest["featuredImageFile"] = featuredImageFile
-            
-            newInterest.saveInBackgroundWithBlock({ (success, error) -> Void in
-                if error == nil {
-                    // ok
-                    // update the current user's interestIds
-                    let currentUser = PFUser.currentUser()!
-                    if var interestIds = currentUser["interestdIds"] as? [String] {
-                        interestIds.append(newInterest.objectId!)
-                    } else {
-                        currentUser["interestdIds"] = [newInterest.objectId!]
-                    }
+        let featuredImageFile = createFileFrom(self.featuredImage)
+        
+        let newInterest = PFObject(className: "Interest")
+        newInterest["title"] = newInterestTitleTextField.text!
+        newInterest["interestDescription"] = newInterestDescriptionTextView.text!
+        newInterest["numberOfMembers"] = 1
+        newInterest["numberOfPosts"] = 0
+        newInterest["featuredImageFile"] = featuredImageFile
+        
+        newInterest.saveInBackgroundWithBlock({ (success, error) -> Void in
+            if error == nil {
+                // ok
+                // update the current user's interestIds
+                let currentUser = PFUser.currentUser()!
+                if var interestIds = currentUser["interestdIds"] as? [String] {
+                    interestIds.append(newInterest.objectId!)
                 } else {
-                    // fail
-                    print("\(error!.localizedDescription)")
+                    currentUser["interestdIds"] = [newInterest.objectId!]
                 }
-            })
-        }
+                currentUser.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    if error != nil {
+                        print("\(error!.localizedDescription)")
+                    }
+                })
+            } else {
+                // fail
+                print("\(error!.localizedDescription)")
+            }
+        })
+    }
+    struct ImageSize {
+        static let height: CGFloat = 480.0
+    }
+    
+    func createFileFrom(image: UIImage) -> PFFile! {
+        let ratio = image.size.width / image.size.height
+        let resizedImage = resizeImage(image, toWidth: ImageSize.height * ratio, andHeight: ImageSize.height)
+        let imageData = UIImageJPEGRepresentation(resizedImage, 0.8)!
+        return PFFile(name: "image.jpg", data: imageData)
+    }
+    
+    func resizeImage(originalImage: UIImage, toWidth width: CGFloat, andHeight height: CGFloat) -> UIImage {
+        let newSize = CGSize(width: width, height: height)
+        let newRectangle = CGRect(x: 0, y: 0, width: width, height: height)
+        UIGraphicsBeginImageContext(newSize)
+        originalImage.drawInRect(newRectangle)
+        
+        let resizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resizedImage
     }
     
     func shakeTextField()

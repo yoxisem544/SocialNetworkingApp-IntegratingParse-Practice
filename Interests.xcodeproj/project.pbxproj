@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63689DDF1BA2C33600BF8003 /* TestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63689DDE1BA2C33600BF8003 /* TestObject.swift */; };
 		63B166051BA160B300E7F59A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B165FE1BA160B300E7F59A /* Bolts.framework */; };
 		63B166061BA160B300E7F59A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B165FF1BA160B300E7F59A /* Parse.framework */; };
 		63B166071BA160B300E7F59A /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B166001BA160B300E7F59A /* ParseCrashReporting.framework */; };
@@ -113,6 +114,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63689DDE1BA2C33600BF8003 /* TestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
 		63B165FE1BA160B300E7F59A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		63B165FF1BA160B300E7F59A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		63B166001BA160B300E7F59A /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				F545E5261B2CEB7200B0A26F /* Post.swift */,
 				F545E5271B2CEB7200B0A26F /* User.swift */,
 				F59BF0CB1B2E5F6900D283DF /* Comment.swift */,
+				63689DDE1BA2C33600BF8003 /* TestObject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				F545E50A1B2CE7F000B0A26F /* AsyncImageView.swift in Sources */,
 				F55772711B2C6A5400DF2649 /* Interest.swift in Sources */,
 				F57CD37B1B2E151C00A51768 /* AnimationController.swift in Sources */,
+				63689DDF1BA2C33600BF8003 /* TestObject.swift in Sources */,
 				F545E5281B2CEB7200B0A26F /* Post.swift in Sources */,
 				F59BF0D11B2E639C00D283DF /* CommentTableViewCell.swift in Sources */,
 				F57CD3881B2E4BE300A51768 /* ActionButton.swift in Sources */,
