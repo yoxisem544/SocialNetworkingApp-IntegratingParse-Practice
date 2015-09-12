@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		63689DDF1BA2C33600BF8003 /* TestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63689DDE1BA2C33600BF8003 /* TestObject.swift */; };
+		63689DE11BA30EB400BF8003 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63689DE01BA30EB400BF8003 /* Global.swift */; };
 		63B166051BA160B300E7F59A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B165FE1BA160B300E7F59A /* Bolts.framework */; };
 		63B166061BA160B300E7F59A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B165FF1BA160B300E7F59A /* Parse.framework */; };
 		63B166071BA160B300E7F59A /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B166001BA160B300E7F59A /* ParseCrashReporting.framework */; };
@@ -115,6 +116,7 @@
 
 /* Begin PBXFileReference section */
 		63689DDE1BA2C33600BF8003 /* TestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestObject.swift; sourceTree = "<group>"; };
+		63689DE01BA30EB400BF8003 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		63B165FE1BA160B300E7F59A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		63B165FF1BA160B300E7F59A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		63B166001BA160B300E7F59A /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				F545E5271B2CEB7200B0A26F /* User.swift */,
 				F59BF0CB1B2E5F6900D283DF /* Comment.swift */,
 				63689DDE1BA2C33600BF8003 /* TestObject.swift */,
+				63689DE01BA30EB400BF8003 /* Global.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				F59BF0CE1B2E5FA900D283DF /* CommentsViewController.swift in Sources */,
 				F57CD37D1B2E151C00A51768 /* ImageCollectionViewCell.swift in Sources */,
 				F57CD3891B2E4BE300A51768 /* ActionButtonItem.swift in Sources */,
+				63689DE11BA30EB400BF8003 /* Global.swift in Sources */,
 				F545E5201B2CE7F000B0A26F /* SpringTextField.swift in Sources */,
 				F55772771B2C8E9A00DF2649 /* InterestHeaderView.swift in Sources */,
 				F545E50C1B2CE7F000B0A26F /* BlurView.swift in Sources */,

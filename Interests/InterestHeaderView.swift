@@ -29,7 +29,7 @@ class InterestHeaderView: UIView
     
     private func updateUI()
     {
-        backgroundImageView?.image! = interest.featuredImage
+//        backgroundImageView?.image! = interest.featuredImage
         interestTitleLabel?.text! = interest.title
         numberOfMembersLabel.text! = "\(interest.numberOfMembers) members"
         numberOfPostsLabel.text! = "\(interest.numberOfPosts) posts"

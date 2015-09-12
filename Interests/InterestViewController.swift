@@ -12,7 +12,7 @@ import UIKit
 class InterestViewController: UIViewController {
 
     // MARK: - Public API
-    var interest: Interest! = Interest.createInterests()[0]
+    var interest: Interest!
     
     // MARK: - Private
     @IBOutlet weak var tableView: UITableView!
@@ -98,7 +98,6 @@ class InterestViewController: UIViewController {
     
     func fetchPosts()
     {
-        posts = Post.allPosts
         tableView.reloadData()
     }
     
@@ -139,7 +138,7 @@ extension InterestViewController : UITableViewDataSource
     {
         let post = posts[indexPath.row]
         
-        if post.postImage != nil {
+        if post.postImageFile != nil {
             let cell = tableView.dequeueReusableCellWithIdentifier("PostCellWithImage", forIndexPath: indexPath) as! PostTableViewCell
             cell.post = post
             cell.delegate = self

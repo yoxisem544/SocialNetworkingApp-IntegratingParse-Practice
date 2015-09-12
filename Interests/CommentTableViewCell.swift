@@ -27,7 +27,7 @@ class CommentTableViewCell: UITableViewCell
     
     private func updateUI()
     {
-        userNameLabel?.text = comment.user.fullName
+//        userNameLabel?.text = comment.user.fullName
         commentTextLabel?.text = comment.commentText
         
         likeButton.setTitle("👻 \(comment.numberOfLikes) Likes", forState: .Normal)
@@ -44,15 +44,15 @@ class CommentTableViewCell: UITableViewCell
     
     @IBAction func likeButtonClicked(sender: DesignableButton)
     {
-        comment.userDidLike = !comment.userDidLike
-        if comment.userDidLike {
-            comment.numberOfLikes++
-        } else {
-            comment.numberOfLikes--
-        }
-        likeButton.setTitle("👻 \(comment.numberOfLikes) Likes", forState: .Normal)
-        
-        currentUserDidLike = comment.userDidLike
+//        comment.userDidLike = !comment.userDidLike
+//        if comment.userDidLike {
+//            comment.numberOfLikes++
+//        } else {
+//            comment.numberOfLikes--
+//        }
+//        likeButton.setTitle("👻 \(comment.numberOfLikes) Likes", forState: .Normal)
+//        
+//        currentUserDidLike = comment.userDidLike
         
         changeLikeButtonColor()
         

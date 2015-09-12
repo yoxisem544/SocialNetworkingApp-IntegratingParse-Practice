@@ -26,21 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor(hex: "f2f2f2")
         
         // register Parse PFObject subclass
-        TestObject.initialize()
         
         Parse.setApplicationId("AmRHj24hoCSWOWlL1mop5RbpWniM0a5caWfoB4X8", clientKey: "sStjfFINjlJ78mvKHxwHs7ONYmZ3ZfZgFGKojDyN")
         
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
-        let testObject = TestObject()
-        testObject.title = "object1"
-        testObject.objectDescription = "ddddssxc"
-        testObject.numbers = 11
-        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
-            if success {
-                print("success")
-            }
-        }
         
         return true
     }

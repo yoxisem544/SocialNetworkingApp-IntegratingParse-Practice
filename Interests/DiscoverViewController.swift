@@ -43,13 +43,13 @@ class DiscoverViewController: UIViewController
     
     func searchInterestsForKey(key: String)
     {
-        interests = Interest.createInterests()
+        interests = [Interest]()
         tableView.reloadData()
     }
     
     func suggestInterests()
     {
-        interests = Interest.createInterests()
+        interests = [Interest]()
         tableView.reloadData()
     }
     

@@ -7,29 +7,39 @@
 //
 
 import UIKit
+import Parse
 
-class User
+public class User : PFUser
 {
-    var id: String
-    var fullName: String
-    var email: String
-    var profileImage: UIImage!
-    var interestId = [String]()
+    @NSManaged public var interestIds: [String]!
+    @NSManaged public var profileImageFile: PFFile!
     
-    init(id: String, fullName: String, email: String, profileImage: UIImage) {
-        self.id = id
-        self.fullName = fullName
-        self.email = email
-        self.profileImage = profileImage
+    public func isMemberOf(interestId: String) -> Bool {
+        return interestIds.contains(interestId)
     }
     
-    // MARK: - Private
-    
-    class func allUsers() -> [User]
-    {
-        return [
-            User(id: "u1", fullName: "Everlyn", email: "everlyn@developerinspirus.io", profileImage: UIImage(named: "profile1")!),
-        ]
+    public func joinInterest(interestId: String) {
+        self.interestIds.insert(interestId, atIndex: 0)
+        self.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error != nil {
+                print("\(error!.localizedDescription)")
+            }
+        }
     }
+    
+    override public class func initialize() {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+        }
+        dispatch_once(&Static.onceToken) { () -> Void in
+            self.registerSubclass()
+        }
+    }
+    
+//    var id: String
+//    var fullName: String
+//    var email: String
+//    var profileImage: UIImage!
+//    var interestId = [String]()
 }
 

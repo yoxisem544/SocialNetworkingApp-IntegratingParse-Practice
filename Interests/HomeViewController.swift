@@ -21,7 +21,7 @@ class HomeViewController: UIViewController
     @IBOutlet weak var currentUserFullNameButton: UIButton!
     
     // MARK: - UICollectionViewDataSource
-    private var interests = Interest.createInterests()
+    private var interests = [Interest]()
     private var slideRightTransitionAnimator = SlideRightTransitionAnimator()
     private var popTransitionAnimator = PopTransitionAnimator()
     private var slideRightThenPop = SlideRightThenPopTransitionAnimator()

@@ -38,10 +38,10 @@ class PostTableViewCell: UITableViewCell
     
     private func updateUI()
     {
-        userProfileImageView?.image = post.user.profileImage
-        userNameLabel?.text = post.user.fullName
-        createdAtLabel?.text = post.createdAt
-        postImageView?.image = post.postImage
+//        userProfileImageView?.image = post.user.profileImage
+//        userNameLabel?.text = post.user.fullName
+//        createdAtLabel?.text = post.createdAt
+//        postImageView?.image = post.postImage
         postTextLabel?.text = post.postText
         
         // rounded post image view, user profile image
@@ -69,15 +69,15 @@ class PostTableViewCell: UITableViewCell
     
     @IBAction func likeButtonClicked(sender: DesignableButton)
     {
-        post.userDidLike = !post.userDidLike
-        if post.userDidLike {
-            post.numberOfLikes++
-        } else {
-            post.numberOfLikes--
-        }
+//        post.userDidLike = !post.userDidLike
+//        if post.userDidLike {
+//            post.numberOfLikes++
+//        } else {
+//            post.numberOfLikes--
+//        }
         likeButton.setTitle("👻 \(post.numberOfLikes) Likes", forState: .Normal)
         
-        currentUserDidLike = post.userDidLike
+//        currentUserDidLike = post.userDidLike
         
         changeLikeButtonColor()
         

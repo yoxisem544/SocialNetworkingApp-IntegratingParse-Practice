@@ -62,7 +62,7 @@ class CommentsViewController: UIViewController
     
     private func fetchComments()
     {
-        comments = Comment.allComments()
+//        comments = Comment.allComments()
         tableView?.reloadData()
     }
     
@@ -90,7 +90,7 @@ extension CommentsViewController : UITableViewDataSource
     {
         // CHALLENGE: - configure the post cell
         if indexPath.row == 0 {
-            if post.postImage == nil {
+            if post.postImageFile == nil {
                 // main post cell
                 let cell = tableView.dequeueReusableCellWithIdentifier("PostCellWithoutImage", forIndexPath: indexPath) as! PostTableViewCell
                 cell.post = post
