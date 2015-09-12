@@ -26,20 +26,19 @@ public class Interest: PFObject, PFSubclassing
         numberOfMembers++
         self.saveInBackground()
     }
-//    var title = ""
-//    var description = ""
-//    var numberOfMembers = 0
-//    var numberOfPosts = 0
-//    var featuredImage: UIImage!
-//    
-//    init(title: String, description: String, featuredImage: UIImage!)
-//    {
-//        self.title = title
-//        self.description = description
-//        self.featuredImage = featuredImage
-//        numberOfMembers = 1
-//        numberOfPosts = 1
-//    }
+    
+    init(title: String, interestDescription: String, imageFile: PFFile, numberOfMembers: Int, numberOfPosts: Int) {
+        super.init()
+        self.title = title
+        self.interestDescription = interestDescription
+        self.featuredImageFile = imageFile
+        self.numberOfMembers = numberOfMembers
+        self.numberOfPosts = numberOfPosts
+    }
+    
+    override init() {
+        super.init()
+    }
     
     public static func parseClassName() -> String {
         return "Interest"

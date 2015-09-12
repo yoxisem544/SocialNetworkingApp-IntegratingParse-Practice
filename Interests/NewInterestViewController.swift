@@ -145,28 +145,23 @@ class NewInterestViewController: UIViewController
     func createNewInterest() {
         let featuredImageFile = createFileFrom(self.featuredImage)
         
-        let newInterest = PFObject(className: "Interest")
-        newInterest["title"] = newInterestTitleTextField.text!
-        newInterest["interestDescription"] = newInterestDescriptionTextView.text!
-        newInterest["numberOfMembers"] = 1
-        newInterest["numberOfPosts"] = 0
-        newInterest["featuredImageFile"] = featuredImageFile
+        let newInterest = Interest(title: newInterestTitleTextField.text!, interestDescription: newInterestDescriptionTextView.text!, imageFile: featuredImageFile, numberOfMembers: 1, numberOfPosts: 0)
+//        newInterest["title"] = newInterestTitleTextField.text!
+//        newInterest["interestDescription"] = newInterestDescriptionTextView.text!
+//        newInterest["numberOfMembers"] = 1
+//        newInterest["numberOfPosts"] = 0
+//        newInterest["featuredImageFile"] = featuredImageFile
         
         newInterest.saveInBackgroundWithBlock({ (success, error) -> Void in
             if error == nil {
                 // ok
                 // update the current user's interestIds
-                let currentUser = PFUser.currentUser()!
-                if var interestIds = currentUser["interestdIds"] as? [String] {
-                    interestIds.append(newInterest.objectId!)
-                } else {
-                    currentUser["interestdIds"] = [newInterest.objectId!]
-                }
-                currentUser.saveInBackgroundWithBlock({ (success, error) -> Void in
-                    if error != nil {
-                        print("\(error!.localizedDescription)")
-                    }
-                })
+                let currentUser = User.currentUser()!
+                currentUser.joinInterest(newInterest.objectId!)
+                
+                let center = NSNotificationCenter.defaultCenter()
+                let notification = NSNotification(name: "NewInterestCreated", object: nil, userInfo: ["newInterestObject": newInterest])
+                center.postNotification(notification)
             } else {
                 // fail
                 print("\(error!.localizedDescription)")

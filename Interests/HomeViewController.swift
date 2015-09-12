@@ -38,6 +38,54 @@ class HomeViewController: UIViewController
             presentLoginViewController()
         } else {
             // the user login
+            fetchInterests()
+            
+            let center = NSNotificationCenter.defaultCenter()
+            let queue = NSOperationQueue.mainQueue()
+            center.addObserverForName("NewInterestCreated", object: nil, queue: queue, usingBlock: { (notification) -> Void in
+                if let newInterest = notification.userInfo?["newInterestObject"] as? Interest {
+                    if !self.interestWasDisplayed(newInterest) {
+                        self.interests.insert(newInterest, atIndex: 0)
+                        self.collectionView.reloadData()
+                    }
+                }
+            })
+        }
+    }
+    
+    func interestWasDisplayed(newInterest: Interest) -> Bool {
+        for interest in interests {
+            if interest.objectId! == newInterest.objectId! {
+                return true
+            }
+        }
+        return false
+    }
+    
+    //fetch data from parse
+    func fetchInterests() {
+        let currentuser = User.currentUser()!
+        let interestdIds = currentuser.interestdIds
+        if interestdIds.count > 0 {
+            let interestQuery = PFQuery(className: Interest.parseClassName())
+            interestQuery.orderByDescending("updatedAt")
+            interestQuery.whereKey("objectId", containedIn: interestdIds)
+            
+            interestQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                if error == nil {
+                    if let interestObjects = objects as? [PFObject] {
+                        self.interests.removeAll()
+                        for interestObject in interestObjects {
+                            let interest = interestObject as! Interest
+                            self.interests.append(interest)
+                        }
+                        
+                        self.collectionView.reloadData()
+                    }
+                } else {
+                    print("\(error!.localizedDescription)")
+                }
+            })
         }
     }
     

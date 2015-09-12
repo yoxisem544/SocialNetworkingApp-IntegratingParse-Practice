@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor(hex: "f2f2f2")
         
         // register Parse PFObject subclass
+        Interest.initialize()
+        User.initialize()
+        Post.initialize()
+        Comment.initialize()
         
         Parse.setApplicationId("AmRHj24hoCSWOWlL1mop5RbpWniM0a5caWfoB4X8", clientKey: "sStjfFINjlJ78mvKHxwHs7ONYmZ3ZfZgFGKojDyN")
         

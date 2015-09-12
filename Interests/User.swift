@@ -11,15 +11,15 @@ import Parse
 
 public class User : PFUser
 {
-    @NSManaged public var interestIds: [String]!
+    @NSManaged public var interestdIds: [String]!
     @NSManaged public var profileImageFile: PFFile!
     
     public func isMemberOf(interestId: String) -> Bool {
-        return interestIds.contains(interestId)
+        return interestdIds.contains(interestId)
     }
     
     public func joinInterest(interestId: String) {
-        self.interestIds.insert(interestId, atIndex: 0)
+        self.interestdIds.insert(interestId, atIndex: 0)
         self.saveInBackgroundWithBlock { (success, error) -> Void in
             if error != nil {
                 print("\(error!.localizedDescription)")

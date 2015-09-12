@@ -24,8 +24,17 @@ class InterestCollectionViewCell: UICollectionViewCell
     
     private func updateUI()
     {
-         interestTitleLabel?.text! = interest.title
-//        featuredImageView?.image! = interest.featuredImage
+        interestTitleLabel?.text! = interest.title
+        
+        interest.featuredImageFile.getDataInBackgroundWithBlock { (imageData, error) -> Void in
+            if error == nil {
+                if let featuredImageData = imageData {
+                    self.featuredImageView.image = UIImage(data: featuredImageData)!
+                }
+            } else {
+                print("\(error?.localizedDescription)")
+            }
+        }
     }
     
     override func layoutSubviews() {
